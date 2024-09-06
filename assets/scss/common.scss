@@ -163,8 +163,8 @@ h4 {
   transform: translate(0, -50%);
   border-radius: 100%;
   padding: 3px;
-  background-image: -webkit-linear-gradient(top, #f4f1ee, #fff);
-  background-image: linear-gradient(top, #f4f1ee, #fff);
+  background-image: -webkit-linear-gradient(#f4f1ee, #fff, top);
+  background-image: linear-gradient(#f4f1ee, #fff, top);
   box-shadow: 0px 8px 10px 0px rgba(0, 0, 0, 0.3), inset 0px 4px 1px 1px white,
     inset 0px -3px 1px 1px rgba(204, 198, 197, 0.5);
   width: 20px;

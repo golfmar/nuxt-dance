@@ -9,6 +9,8 @@ header
           NuxtLink(to='/about') About
         li
           NuxtLink(to='/products') Products
+        li
+          NuxtLink(to='/gram') Gram
 
 
 </template>
