@@ -6,6 +6,9 @@ export default defineNuxtConfig({
     'normalize.css'
   ],
   vite: {
+     plugins: [
+      require('vite-svg-loader')()
+    ],
     css: {
       preprocessorOptions: {
         scss: {

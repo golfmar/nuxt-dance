@@ -11,6 +11,8 @@ header
           NuxtLink(to='/products') Products
         li
           NuxtLink(to='/gram') Gram
+        li
+          NuxtLink(to='/add') add
 
 
 </template>

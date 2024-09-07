@@ -1,5 +1,5 @@
 <template lang='pug'>
-.wrapper
+.wrapper#app
   NuxtLayout
     main
       NuxtPage
