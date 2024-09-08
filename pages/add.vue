@@ -1,55 +1,80 @@
 <template lang="pug">
-.form-container
-  h2 Add Item to Firebase Array
-  p RF
-  p LF
-  p fwd
-  p back
-  p Facing
-  p Backing
-  p to side
-  p and
-  p slightly
-  p Rf
-  p close
-  p to
-  p No turn
+.container
+  .form-container
+    //- form(@submit.prevent="handleFertig")
+    //-   .input-field
+    //-     input(type='text' v-model="collectionName"  id="collectionName"   placeholder=' Denzel Washington')
+    //-     label.text-field__label(for="collectionName") collectionName
+    //-   .input-field
+    //-     input(type='text' v-model="figureName"  id="figureName"   placeholder=' Denzel Washington')
+    //-     label.text-field__label(for="figureName") figureName
+    //-   .input-field
+    //-     input(type='text' v-model="sex"  id="sex"   placeholder=' Denzel Washington')
+    //-     label.text-field__label(for="sex") sex
+    //-   button(type="submit") collection data fertig
+    textarea.drop-linea( v-model="drop")
+    .inputs
+      button.clear(type = "button"  @click='clear') clear
+      button(type = "button"  @click='clickHandler("RF")') RF
+      button(type = "button"  @click='clickHandler("Rf")') Rf
+      button(type = "button"  @click='clickHandler("LF")') LF
+      button(type = "button"  @click='clickHandler("fwd")') fwd
+      button(type = "button"  @click='clickHandler("back")') back
+      button(type = "button"  @click='clickHandler("side")') side
+      button(type = "button"  @click='clickHandler("to side and slightly fwd")') to side and slightly fwd
+      button(type = "button"  @click='clickHandler("to side and slightly back")') to side and slightly back
+      button(type = "button"  @click='clickHandler("RF")') to
+      button(type = "button"  @click='clickHandler("and")') and
+      button(type = "button"  @click='clickHandler("Facing")') Facing
+      button(type = "button"  @click='clickHandler("Backing")') Backing
+      button(type = "button"  @click='clickHandler("slightly")') slightly
+      button(type = "button"  @click='clickHandler("close")') close
+      button(type = "button"  @click='clickHandler("No turn")') No turn
+
+     
   
-  form(@submit.prevent="handleSubmit")
-    div
-      label(for="myArray1Item") Add to myArray1:
-      input(v-model="myArray1Item" type="text" id="myArray1Item" )
-
-    div
-      label(for="myArray2Item") Add to myArray2:
-      input(v-model="myArray2Item" type="text" id="myArray2Item" )
-
-    div
-      label(for="myArray3Item") Add to myArray3:
-      input(v-model="myArray3Item" type="text" id="myArray3Item" )
-
-    div
-      label(for="myArray4Item") Add to myArray4:
-      input(v-model="myArray4Item" type="text" id="myArray4Item" )
-
-    div
-      label(for="myArray5Item") Add to myArray5:
-      input(v-model="myArray5Item" type="text" id="myArray5Item" )
-
-    div
-      label(for="myArray6Item") Add to myArray6:
-      input(v-model="myArray6Item" type="text" id="myArray6Item" )
-
-    button(type="submit") Add to Arrays
-
-  // Сообщение об успешном добавлении
-  p(v-if="message") {{ message }}
+    form(@submit.prevent="handleSubmit")
+      div
+        label(for="myArray1Item") 1--->
+        input(v-model="myArray1Item" type="text" id="myArray1Item" @focus="myArray1Item=drop" )
+  
+      div
+        label(for="myArray2Item") 2--->
+        input(v-model="myArray2Item" type="text" id="myArray2Item" @focus="myArray2Item=drop")
+  
+      div
+        label(for="myArray3Item") 3--->
+        input(v-model="myArray3Item" type="text" id="myArray3Item" @focus="myArray3Item=drop")
+  
+      div
+        label(for="myArray4Item") 4--->
+        input(v-model="myArray4Item" type="text" id="myArray4Item" @focus="myArray4Item=drop")
+  
+      div
+        label(for="myArray5Item") 5--->
+        input(v-model="myArray5Item" type="text" id="myArray5Item" @focus="myArray5Item=drop")
+  
+      div
+        label(for="myArray6Item") 6--->
+        input(v-model="myArray6Item" type="text" id="myArray6Item" @focus="myArray6Item=drop")
+  
+      button(type="submit") Add to Arrays
+  
+    // Сообщение об успешном добавлении
+    p(v-if="message") {{ message }}
 </template>
 
 <script setup>
 import { ref } from 'vue';
 import { db } from '@/composables/firebase'; // Импортируйте Firebase и Firestore
 import { doc, collection, updateDoc, arrayUnion } from "firebase/firestore";
+
+const drop = ref('');
+
+const clickHandler = (value) => {
+	drop.value = drop.value + " " + value
+};
+
 
 // Рефы для хранения значений полей формы
 const myArray1Item = ref('');
@@ -60,9 +85,28 @@ const myArray5Item = ref('');
 const myArray6Item = ref('');
 const message = ref('');
 
+const clear = () => {
+	drop.value = '';
+	myArray1Item.value = '';
+	myArray2Item.value = '';
+	myArray3Item.value = '';
+	myArray4Item.value = '';
+	myArray5Item.value = '';
+	myArray6Item.value = '';
+};
+
+
+// "Waltz"
+// "RF Closed Change (Natural to Reverse)"
+// "Lady"
+
+
+
+
 // Шаг 1: Получите доступ к документу и вложенной коллекции
 const mainDocRef = doc(db, "Waltz", "RF Closed Change (Natural to Reverse)");
-const subDocRef = doc(collection(mainDocRef, "Lady"), "steps");
+const subDocRef = doc(collection(mainDocRef, "Man"), "steps");
+
 
 // Функция для отправки данных в Firestore
 const handleSubmit = async () => {
@@ -146,29 +190,64 @@ const handleSubmit = async () => {
 	}
 
 }
+
+
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
 .form-container {
-	max-width: 400px;
+	max-width: 800px;
+	/* display: grid; */
+	/* column-gap: 25px; */
+	/* grid-template-columns: repeat(2, max-content); */
+
+}
+
+.inputs {
+	display: flex;
+	column-gap: 5px;
+}
+
+.input-field {
+	margin: 20px 0 0 0;
+}
+
+.drop-linea {
+	width: 100%;
+	margin: 10px 0;
 }
 
 form {
+	margin: 30px 0 0 0;
 	display: flex;
 	flex-direction: column;
 	gap: 1rem;
+	background: $purple-1;
+	padding: 5px;
+	grid-row: 1/-1;
+
+	label {
+		margin: 0 20px 0 0;
+		font-weight: 600;
+		color: red;
+	}
 }
 
 button {
 	padding: 0.5rem;
 	background-color: #3498db;
 	color: white;
-	border: none;
+	border: 3px solid white;
+	border-radius: 3px;
 	cursor: pointer;
 }
 
 button:hover {
 	background-color: #2980b9;
+}
+
+.clear {
+	background: rgba(0, 0, 0, .75);
 }
 
 p {

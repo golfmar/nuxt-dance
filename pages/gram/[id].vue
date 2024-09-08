@@ -1,5 +1,7 @@
 <template lang='pug'>
 .container
+  NuxtLink(:to="`/gram`" class='linkTo') Back to the figures
+    MyIcon
   .card
     h2 {{id}}
     table
@@ -16,8 +18,8 @@
         tr( v-for="(key, index) in keys" :key="index"   ) 
           td {{key}}
           td(v-for="(item, i) in documentsLady[key]" :key="i") {{ item }}
-    NuxtLink(:to="`/gram`" class='linkTo') Back to the figures
-      MyIcon
+
+  General
 </template>
 <script setup>
 const { id } = useRoute().params
@@ -78,22 +80,9 @@ onMounted(async () => {
 
 </script>
 <style lang='scss' scoped>
-h2 {
-  display: block;
-  font-size: 18px;
+.linkTo {
+  margin: 0 0 30px 0;
 }
-
-p {
-  span {
-    font-family: "RR", sans-serif;
-    font-size: 14px;
-    font-weight: 800;
-    color: #5d4037;
-    text-transform: uppercase;
-    line-height: 1.5;
-  }
-}
-
 
 
 table {
@@ -110,7 +99,7 @@ table {
 
 th,
 td {
-  border: 1px solid black;
+  border: 1px solid rgb(165, 164, 164);
   padding: 8px;
   text-align: left;
 
@@ -119,7 +108,7 @@ td {
 
 /* Применяем видимые размеры только для шапки */
 thead th {
-  border: 1px solid black;
+  border: 1px solid rgb(165, 164, 164);
   white-space: nowrap;
   /* Автоматическая ширина по содержимому */
 }
@@ -194,47 +183,5 @@ h3 {
 //       background-color: brown;
 //       color: #fff;
 //     }
-//   }
-// }
-
-.linkTo {
-  margin: 30px 0 0 0;
-}
-
-// .result {
-//   display: grid;
-//   grid-template-columns: 127px 1fr;
-//   border-bottom: 1px solid brown;
-//   border-collapse: collapse;
-//   &__content {
-//     display: flex;
-//     flex-direction: column;
-//   }
-//   &__unit {
-//     font-family: "Roboto-Regular", sans-serif;
-//     font-weight: 400;
-//     font-size: 16px;
-//     text-transform: none;
-//     align-items: center;
-//     align-content: center;
-//     display: grid;
-//     grid-template-columns: repeat(9, max-content);
-//     background-color: #fff;
-//     height: 100%;
-//     border-bottom: 1px solid #ededed;
-//     &:last-child span {
-//       border-bottom: none;
-//     }
-//     span {
-//       height: 100%;
-//       border-right: 1px solid #ededed;
-//       font-size: 12px;
-//       min-width: 100px;
-//       text-align: center;
-//       padding: 3px;
-//     }
-//   }
-//   .progress-circle {
-//     width: 77px;
 //   }
 // }</style>

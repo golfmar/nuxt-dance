@@ -4,7 +4,6 @@
   ul
     //-  --фигура 
     li(v-for="item in documents" :key="index") 
-      
       h3 {{documents.indexOf(item)+1}}.  {{item.id}}
       NuxtLink(:to="`/gram/${item.id}`" class='linkTo') View Details
         MyIcon
