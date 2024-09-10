@@ -12,7 +12,7 @@ header
         //- li
         //-   NuxtLink(to='/products') Products
         li
-          NuxtLink(to='/gram') Waltz
+          NuxtLink(to='/waltz') Waltz
         li
           NuxtLink(to='/add') add
 

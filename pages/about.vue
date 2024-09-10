@@ -73,7 +73,7 @@
 
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
 table {
   border-collapse: collapse;
   width: auto;
@@ -84,6 +84,10 @@ table {
   font-family: "Roboto-Regular", sans-serif;
   font-size: 1rem;
   font-weight: 400;
+}
+
+h3 {
+  margin: 20px 0 0 0;
 }
 
 caption {
