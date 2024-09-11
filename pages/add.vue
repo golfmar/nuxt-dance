@@ -157,8 +157,8 @@ import { doc, collection, updateDoc, arrayUnion, setDoc } from "firebase/firesto
 const drop = ref('');
 
 const clickHandler = (value) => {
-	value = value.replace(/&lt;/g, '<').replace(/&gt;/g, '>');
-	drop.value = drop.value + " " + value
+  value = value.replace(/&lt;/g, '<').replace(/&gt;/g, '>');
+  drop.value = drop.value + " " + value
 };
 
 
@@ -172,13 +172,13 @@ const myArray6Item = ref('');
 const message = ref('');
 
 const clear = () => {
-	drop.value = '';
-	// myArray1Item.value = '';
-	// myArray2Item.value = '';
-	// myArray3Item.value = '';
-	// myArray4Item.value = '';
-	// myArray5Item.value = '';
-	// myArray6Item.value = '';
+  drop.value = '';
+  // myArray1Item.value = '';
+  // myArray2Item.value = '';
+  // myArray3Item.value = '';
+  // myArray4Item.value = '';
+  // myArray5Item.value = '';
+  // myArray6Item.value = '';
 };
 
 
@@ -201,108 +201,93 @@ const clear = () => {
 
 
 
-
-
-
-
-
-
-
-
-
 const steps1 = [
-	"RF fwd in CBMP OP ",
-	"HT",
-	"Facing DW",
-	"Start to turn R On 1",
-	"Start to rise e/o 1",
-	"1",
-	"-",
-	"1",
+  "LF fwd in CBMP<br>and PP",
+  "HT",
+  "Facing DC<br>against LOD",
+  "Start to turn L on 1",
+  "Start to rise e/o 1",
+  "1",
+  "-",
+  "1",
 ];
 
 const steps2 = [
-	"LF closes to RF",
-	"T",
-	"Facing DC<br>against LOD",
-	"1/2 between 1 and 2",
-	"Continue to rise<br>on 2",
-	"-",
-	"-",
-	"2",
+  "RF to side and<br>slightly back",
+  "T",
+  "Backing DC",
+  "1/4 between 1 and 2",
+  "Continue to rise<br>on 2",
+  "-",
+  "-",
+  "2",
 ];
 const steps3 = [
-	"RF diag fwd",
-	"TH",
-	"Facing DC",
-	"1/4 between 2 and 3",
-	"Up on 3<br>Lower e/o 3",
-	"-",
-	"-",
-	"3",
+  "LF to side and<br>slightly fwd",
+  "TH",
+  "Pointing DC",
+  "1/2 between 2 and 3.<br>body turns less",
+  "Up on 3<br>Lower e/o 3",
+  "-",
+  "-",
+  "3",
 ];
 const steps4 = [
-
+  "RF fwd in CBMP OP",
+  "HT",
+  "Facing DC",
+  "No turn on 4",
+  "Down on 4<br>Start to rise e/o 4",
+  "-",
+  "-",
+  "1",
 ];
 const steps5 = [
-
+  "LF fwd",
+  "T",
+  "Facing DC",
+  "Continue to turn<br>L on 5",
+  "Continue to rise<br>on 5",
+  "5",
+  "-",
+  "2",
 ];
 const steps6 = [
-
+  "RF to side and<br>slightly back",
+  "TH",
+  "Backing DW",
+  "1/4 between 5 and 6,<br>body turns less",
+  "Up on 6<br>Lower e/o 6",
+  "-",
+  "-",
+  "3",
 ];
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
 const uploadDataToFirebase = async () => {
-	try {
+  try {
 
-		const data = {
-			1: steps1,
-			2: steps2,
-			3: steps3,
-			// 4: steps4,
-			// 5: steps5,
-			// 6: steps6,
-		};
+    const data = {
+      1: steps1,
+      2: steps2,
+      3: steps3,
+      4: steps4,
+      5: steps5,
+      6: steps6,
+    };
 
-		const mainDocRef = doc(db, "Waltz", "Underturned Outside Spin");
-		// await setDoc(doc(collection(mainDocRef, "Man"), "steps"), data);
-		await setDoc(doc(collection(mainDocRef, "Lady"), "steps"), data);
-		alert("Массив успешно загружен в Firebase");
-	} catch (e) {
-		console.error("Ошибка при загрузке данных: ", e);
-	}
+    const mainDocRef = doc(db, "Waltz", "Weave from PP(after Whisk)");
+    // await setDoc(doc(collection(mainDocRef, "Man"), "steps"), data);
+    await setDoc(doc(collection(mainDocRef, "Lady"), "steps"), data);
+    alert("Массив успешно загружен в Firebase");
+  } catch (e) {
+    alert("Ошибка при загрузке данных: ", e);
+  }
 };
 
 const dropClick = () => {
-	uploadDataToFirebase()
+  uploadDataToFirebase()
 };
 // Функция для отправки данных в Firestore
 // const handleSubmit = async () => {
@@ -398,100 +383,100 @@ const dropClick = () => {
 
 <style lang="scss" scoped>
 input[type='text'] {
-	// display: none;
-	height: 30px;
+  // display: none;
+  height: 30px;
 }
 
 input[type="radio"] {
-	position: fixed;
-	z-index: -1;
-	left: 1050%;
+  position: fixed;
+  z-index: -1;
+  left: 1050%;
 }
 
 input[type="radio"]+label {
-	display: inline-block;
-	position: absolute;
-	left: 0%;
-	top: 50%;
-	width: 30px;
-	height: 30px;
-	display: grid;
-	place-items: center;
-	transform: translate(0%, -50%);
-	transition: all 0.2s;
-	cursor: pointer;
-	border-radius: 10px;
-	background: beige;
-	box-shadow: 0px 8px 10px 0px rgba(0, 0, 0, .3), inset 0px 4px 1px 1px white, inset 0px -3px 1px 1px rgba(204, 198, 197, .5);
+  display: inline-block;
+  position: absolute;
+  left: 0%;
+  top: 50%;
+  width: 30px;
+  height: 30px;
+  display: grid;
+  place-items: center;
+  transform: translate(0%, -50%);
+  transition: all 0.2s;
+  cursor: pointer;
+  border-radius: 10px;
+  background: beige;
+  box-shadow: 0px 8px 10px 0px rgba(0, 0, 0, .3), inset 0px 4px 1px 1px white, inset 0px -3px 1px 1px rgba(204, 198, 197, .5);
 
 }
 
 input[type="radio"]:checked+label {}
 
 input[type="radio"]:checked+label+input[type='text'] {
-	display: inline-block;
+  display: inline-block;
 }
 
 .form-container {
-	max-width: 800px;
-	/* display: grid; */
-	/* column-gap: 25px; */
-	/* grid-template-columns: repeat(2, max-content); */
+  max-width: 800px;
+  /* display: grid; */
+  /* column-gap: 25px; */
+  /* grid-template-columns: repeat(2, max-content); */
 
 }
 
 .inputs {
-	display: flex;
-	column-gap: 5px;
-	flex-wrap: wrap;
+  display: flex;
+  column-gap: 5px;
+  flex-wrap: wrap;
 }
 
 .input-field {
-	margin: 20px 0 0 0;
+  margin: 20px 0 0 0;
 }
 
 .drop-linea {
-	width: 100%;
-	margin: 10px 0;
+  width: 100%;
+  margin: 10px 0;
 }
 
 form {
-	margin: 30px 0 0 0;
-	display: flex;
-	flex-direction: column;
-	gap: 1rem;
-	background: $purple-1;
-	padding: 5px;
-	grid-row: 1/-1;
+  margin: 30px 0 0 0;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  background: $purple-1;
+  padding: 5px;
+  grid-row: 1/-1;
 
-	div {
-		position: relative;
-		padding: 0 0 0 40px;
-		height: 30px;
-	}
+  div {
+    position: relative;
+    padding: 0 0 0 40px;
+    height: 30px;
+  }
 
 
 }
 
 button {
-	padding: 0.5rem;
-	background-color: #3498db;
-	color: white;
-	border: 3px solid white;
-	border-radius: 3px;
-	cursor: pointer;
+  padding: 0.5rem;
+  background-color: #3498db;
+  color: white;
+  border: 3px solid white;
+  border-radius: 3px;
+  cursor: pointer;
 }
 
 button:hover {
-	background-color: #2980b9;
+  background-color: #2980b9;
 }
 
 .clear {
-	background: rgba(0, 0, 0, .75);
+  background: rgba(0, 0, 0, .75);
 }
 
 p {
-	color: green;
-	font-weight: bold;
+  color: green;
+  font-weight: bold;
 }
 </style>
