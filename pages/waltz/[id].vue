@@ -10,15 +10,15 @@
         tr
           th(v-for="i in topColls" :key="index") {{ i }}
       h3 Man
-      tbody
+      tbody(v-if="documentsMan")
         tr( v-for="(key, index) in keys" :key="index"   ) 
           td {{key}}
-          td(v-for="(item, i) in documentsMan[key]" :key="i" v-if="documentsMan" v-html='item') 
+          td(v-for="(item, i) in documentsMan[key]" :key="i"  v-html='item') 
       h3 Lady
-      tbody
+      tbody(v-if="documentsLady")
         tr( v-for="(key, index) in keys" :key="index"   ) 
           td {{key}}
-          td(v-for="(item, i) in documentsLady[key]" :key="i" v-if="documentsLady" v-html='item')
+          td(v-for="(item, i) in documentsLady[key]" :key="i"  v-html='item')
     table.clein
       tbody
         tr(v-if="documentsManNote") 
@@ -54,7 +54,7 @@
                   div(v-for="el in i.Member" :key="index" ) 
                     p(v-html='el')
 
-  .card(v-if="id=='RF Closed Change (Natural to Reverse)'")
+  .card(v-if="id==='RF Closed Change (Natural to Reverse)'")
     h2 LF Closed Change (Reverse to Natural)
     table
       h3 Man
@@ -80,7 +80,7 @@
   General
 </template>
 <script setup>
-const id = useRoute().params.id.replace(/-/g, ' ')
+const id = useRoute().params.id.replace(/--/g, ' ')
 console.log(id);
 import MyIcon from '@/assets/svg/click.svg'
 definePageMeta({
@@ -114,9 +114,12 @@ const fetchData = async () => {
   const subQuerySnapshotLady = await getDocs(subCollectionRefLady);
   const subQuerySnapshotPRECEDE = await getDocs(subCollectionRefPRECEDE);
   const subQuerySnapshotFOLLOW = await getDocs(subCollectionRefFOLLOW);
+
   const subCollectionArrayMan = subQuerySnapshotMan.docs.map(subDocSnapshot => ({
     ...subDocSnapshot.data()
   }));
+
+
   const subCollectionArrayLady = subQuerySnapshotLady.docs.map(subDocSnapshot => ({
     ...subDocSnapshot.data()
   }));
@@ -140,7 +143,9 @@ const fetchData = async () => {
     documentsManNote.value = subCollectionArrayMan[0];
   } else {
     documentsMan.value = subCollectionArrayMan[0];
+
   }
+
   if (subCollectionArrayLady.length > 1) {
     documentsLady.value = subCollectionArrayLady[1];
     documentsLadyNote.value = subCollectionArrayLady[0];
@@ -217,7 +222,7 @@ table {
     tbody {
       td {
         width: auto;
-        white-space: wrap;
+        white-space: pre-wrap;
       }
 
       tr {
@@ -237,7 +242,7 @@ table {
 
     th {
       white-space: nowrap;
-      padding: 0px 8px 8px 3px;
+      padding: 0 8px 8px 3px;
     }
 
     th,
@@ -255,7 +260,7 @@ table {
 
 
       &:not(:has(p)) div {
-        padding: 8px 0px 3px;
+        padding: 8px 0 3px;
 
       }
     }

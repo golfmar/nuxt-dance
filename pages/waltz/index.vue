@@ -11,21 +11,20 @@
   ul
     //-  --фигура 
     li(v-for="(item,index) in documents" :key="index") 
-      h3(v-if="item.id =='RF-Closed-Change-(Natural-to-Reverse)'") {{index+1}}. {{item.id.replace(/-/g, ' ') +' / ' +'LF Closed Change (Reverse to Natural)'}}
+      h3(v-if="item.id =='RF-Closed-Change-(Natural-to-Reverse)'") {{index+1}}. {{item.id.replace(/--/g, ' ') +' / ' +'LF Closed Change (Reverse to Natural)'}}
         NuxtLink(:to="`/waltz/${item.id}`" class='linkTo')
           MyIcon
-      h3(v-else) {{index+1}}. {{item.id}}
+      h3(v-else) {{index+1}}. {{item.id.replace(/--/g, ' ')}}
         NuxtLink(:to="`/waltz/${item.id}`" class='linkTo')
           MyIcon
 
 
 </template>
 <script setup>
-import { ref, onMounted, reactive, computed } from 'vue'
+import { onMounted, ref } from 'vue'
 import MyIcon from '@/assets/svg/click.svg'
 import { db } from "@/composables/firebase.ts";
-import { collection, query, onSnapshot, doc, getDoc, getDocs } from "firebase/firestore";
-
+import { collection, getDocs } from "firebase/firestore";
 
 
 const documents = ref([]);
@@ -34,7 +33,7 @@ const fetchData = async () => {
   const mainCollectionRef = collection(db, "Waltz");
   const mainQuerySnapshot = await getDocs(mainCollectionRef);
 
-  const fetchedDocuments = await Promise.all(mainQuerySnapshot.docs.map(async (docSnapshot) => {
+  documents.value = await Promise.all(mainQuerySnapshot.docs.map(async (docSnapshot) => {
     // const docData = docSnapshot.data();
 
     // Получение вложенной коллекции
@@ -48,12 +47,11 @@ const fetchData = async () => {
 
     return {
       // ---здесь нужно только id которое посылается на дочерний
-      id: docSnapshot.id.replace(/\s+/g, '-'),
+      // id: docSnapshot.id.replace(/\s+/g, '-'),
+      id: docSnapshot.id.replace(/\s+/g, '--'),
       // subCollectionArray
     };
   }));
-
-  documents.value = fetchedDocuments;
 };
 
 onMounted(() => {

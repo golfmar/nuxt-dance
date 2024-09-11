@@ -152,7 +152,7 @@
 <script setup>
 import { ref } from 'vue';
 import { db } from '@/composables/firebase'; // Импортируйте Firebase и Firestore
-import { doc, collection, updateDoc, arrayUnion, setDoc } from "firebase/firestore";
+import { doc, collection, setDoc } from "firebase/firestore";
 
 const drop = ref('');
 
@@ -198,91 +198,46 @@ const clear = () => {
 // <br>
 
 
-
-
-
 const steps1 = [
-  "LF fwd in CBMP<br>and PP",
-  "HT",
-  "Facing DC<br>against LOD",
-  "Start to turn L on 1",
-  "Start to rise e/o 1",
-  "1",
-  "-",
-  "1",
+
 ];
 
 const steps2 = [
-  "RF to side and<br>slightly back",
-  "T",
-  "Backing DC",
-  "1/4 between 1 and 2",
-  "Continue to rise<br>on 2",
-  "-",
-  "-",
-  "2",
+
 ];
 const steps3 = [
-  "LF to side and<br>slightly fwd",
-  "TH",
-  "Pointing DC",
-  "1/2 between 2 and 3.<br>body turns less",
-  "Up on 3<br>Lower e/o 3",
-  "-",
-  "-",
-  "3",
+
 ];
 const steps4 = [
-  "RF fwd in CBMP OP",
-  "HT",
-  "Facing DC",
-  "No turn on 4",
-  "Down on 4<br>Start to rise e/o 4",
-  "-",
-  "-",
-  "1",
+
 ];
 const steps5 = [
-  "LF fwd",
-  "T",
-  "Facing DC",
-  "Continue to turn<br>L on 5",
-  "Continue to rise<br>on 5",
-  "5",
-  "-",
-  "2",
+
 ];
 const steps6 = [
-  "RF to side and<br>slightly back",
-  "TH",
-  "Backing DW",
-  "1/4 between 5 and 6,<br>body turns less",
-  "Up on 6<br>Lower e/o 6",
-  "-",
-  "-",
-  "3",
-];
 
+];
 
 
 const uploadDataToFirebase = async () => {
   try {
-
     const data = {
       1: steps1,
       2: steps2,
       3: steps3,
-      4: steps4,
-      5: steps5,
-      6: steps6,
+      // 4: steps4,
+      // 5: steps5,
+      // 6: steps6,
     };
 
-    const mainDocRef = doc(db, "Waltz", "Weave from PP(after Whisk)");
+    const mainDocRef = doc(db, "Waltz",
+      "Contra Check"
+    );
     // await setDoc(doc(collection(mainDocRef, "Man"), "steps"), data);
     await setDoc(doc(collection(mainDocRef, "Lady"), "steps"), data);
     alert("Массив успешно загружен в Firebase");
   } catch (e) {
-    alert("Ошибка при загрузке данных: ", e);
+    alert("Ошибка при загрузке данных: ");
   }
 };
 
@@ -394,9 +349,7 @@ input[type="radio"] {
 }
 
 input[type="radio"]+label {
-  display: inline-block;
   position: absolute;
-  left: 0%;
   top: 50%;
   width: 30px;
   height: 30px;
@@ -407,7 +360,7 @@ input[type="radio"]+label {
   cursor: pointer;
   border-radius: 10px;
   background: beige;
-  box-shadow: 0px 8px 10px 0px rgba(0, 0, 0, .3), inset 0px 4px 1px 1px white, inset 0px -3px 1px 1px rgba(204, 198, 197, .5);
+  box-shadow: 0 8px 10px 0 rgba(0, 0, 0, .3), inset 0 4px 1px 1px white, inset 0px -3px 1px 1px rgba(204, 198, 197, .5);
 
 }
 
