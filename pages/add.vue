@@ -147,6 +147,77 @@
   
     // Сообщение об успешном добавлении
     p(v-if="message") {{ message }}
+
+
+
+
+
+//- <div class="unit">  
+//- <h3>Note Man</h3>  
+//- <p> 
+
+//- </p>
+//- </div> 
+           
+<div class="unit"> 
+<h3>Note</h3>  
+<p>
+The Quarter Turn to R may start facing LOD, amount of turn will then be 1/4 between 1 and 2, lady 3/8 between 1 and 2,<br>
+body turns less.
+</p>  
+</div>
+
+
+
+      
+<div class="unit">
+<h3>PRECEDE</h3>
+<div>
+<h4> Associate: </h4>  
+At Turn or Not Pivot Turn at a corner ended facing DW of new LOD or facing new LOG.<br>
+When started RF fwd OP: Prog Chasse, Fwd Lock Step, Running Finish.
+</div> 
+
+<div> 
+<h4>Member:</h4> 
+Running Right Turn ended LOSE or DW, For Q Run, FishTail, Telemark, Nat Turn Back Lock<br>
+Running Finish.
+</div> 
+</div>   
+                     
+<div class="unit">  
+<h3>FOLLOW</h3>   
+<div> 
+<h4> Associate: </h4>
+Prog Chasse, Rev Pivot.
+</div>  
+
+<div> 
+<h4>Member:</h4> 
+Four Q Run. Near a corner 2-4 of Back Lock Running Finish ended facing new LOD.
+</div> 
+</div>  
+                              
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 </template>
 
 <script setup>
@@ -198,18 +269,60 @@ const clear = () => {
 // <br>
 
 
-const steps1 = [
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+const steps1 = [
+  "LF back",
+  "TH",
+  "Backing DW",
+  "Start to turn On 1 ",
+  "Start to rise e/o<br>1 NFR",
+  "1",
+  "St",
+  "S",
 ];
 
 const steps2 = [
-
+  "RF to side",
+  "T",
+  "Pointing DC",
+  "1/4 between 1 and 2,<br> body turns less",
+  "Continue to rise<br> on 2",
+  "-",
+  "L",
+  "Q",
 ];
 const steps3 = [
-
+  "LF closes to RF",
+  "T",
+  "Facing DC",
+  "Slight body turn<br> on 3",
+  "Continue to rise<br>on 3",
+  "-",
+  "L",
+  "Q",
 ];
 const steps4 = [
-
+  "RF diag fwd",
+  "TH",
+  "Facing DC",
+  "No turn on 4",
+  "Up on 4<br>Lower e/o 4",
+  "-",
+  "St",
+  "S",
 ];
 const steps5 = [
 
@@ -225,13 +338,13 @@ const uploadDataToFirebase = async () => {
       1: steps1,
       2: steps2,
       3: steps3,
-      // 4: steps4,
+      4: steps4,
       // 5: steps5,
       // 6: steps6,
     };
 
-    const mainDocRef = doc(db, "Waltz",
-      "Contra Check"
+    const mainDocRef = doc(db, "Quickstep",
+      "Quater Turn to Right"
     );
     // await setDoc(doc(collection(mainDocRef, "Man"), "steps"), data);
     await setDoc(doc(collection(mainDocRef, "Lady"), "steps"), data);

@@ -2,25 +2,27 @@ h1 {
   font-family: "RR", sans-serif;
   font-size: 20px;
   font-weight: 800;
-  color: $brown-8;
+   color: #76FF03;
   text-transform: uppercase;
   line-height: 1;
   text-shadow: 0 0 5px white;
   margin: 0.67em 0;
 }
 h2 {
-  font-family: "Roboto-Regular", sans-serif;
+  font-family: "RR", sans-serif;
   font-size: 20px;
   font-weight: 600;
-  color: $brown-8;
+   color: azure;
   text-transform: uppercase;
   line-height: 1.5;
   text-shadow: 0 0 5px white;
 }
-
+h3 {
+  font-family: "RR", sans-serif;
+  display: inline-block;
+}
 h4 {
   font-family: "RR", sans-serif;
-  color: $brown-8;
-  font-size: 17px;
-  font-weight: 500;
+  color: azure;
+  font-weight: 600;
 }

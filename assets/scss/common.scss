@@ -12,7 +12,8 @@ body {
   font-size: 16px;
   font-weight: 400;
   line-height: 1;
-  background: $brown-2;
+  background: #3B1B8B;
+  color: azure;
 }
 
 *::-webkit-scrollbar {
@@ -73,8 +74,8 @@ a {
 }
 .linkTo {
   @include ts;
-  color: #666;
-  display: flex;
+  color: #9ca2fc;
+  display: inline-flex;
   align-items: center;
   column-gap: 5px;
   transition: all 0.2s;

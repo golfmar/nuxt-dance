@@ -2,22 +2,19 @@
 div
   transition(mode='easy-in-out' name='opentab')
     .container(v-if="showComponent") 
-      h1 Waltz
-      p <strong>Time Signature</strong> - 3/4 Three beats to one bar
-      p <strong>Tempo (beats per minute)</strong> - 30
-      p <strong>Accented Beat</strong> - One
-      p <strong>Counting in Beats</strong> - 123, 123, etc.
-      p <strong>Counting in Beats and Bars</strong> - Count the first bar, then each successive bar as they accumulate, thus:
-      p 123, 223, 323, etc.
-      p Each step will equal one beat.
+      h1 Quickstep
+      p <strong>Time Signature</strong> - 4/4 Four beats to one bar
+      p <strong>Tempo (beats per minute)</strong> - 50
+      p <strong>Accented Beat</strong> - One and Three (One stronger)
+      p <strong>Counting in Beats</strong> - 1234     1234 etc.
+      p <strong>Counting in Beats and Bars. Then each successive bar as they accumulate, thus:</strong> -1234 2234 3234, etc.
+      p A slow count equals 2 beats
+      p A quick count equals 1 beat
       ul
         //-  --фигура 
         li(v-for="(item,index) in documents" :key="index") 
-          h3(v-if="item.id =='RF-Closed-Change-(Natural-to-Reverse)'") {{index+1}}. {{item.id.replace(/--/g, ' ') +' / ' +'LF Closed Change (Reverse  to Natural)'}}
-            NuxtLink(:to="`/waltz/${item.id}`" class='linkTo')
-              MyIcon
-          h3(v-else) {{index+1}}. {{item.id.replace(/--/g, ' ')}}
-            NuxtLink(:to="`/waltz/${item.id}`" class='linkTo')
+          h3 {{index+1}}. {{item.id.replace(/--/g, ' ')}}
+            NuxtLink(:to="`/quickstep/${item.id}`" class='linkTo')
               MyIcon
 
 
@@ -35,7 +32,7 @@ const showComponent = ref(false)
 const documents = ref([]);
 const fetchData = async () => {
   // Получение документов из основной коллекции
-  const mainCollectionRef = collection(db, "Waltz");
+  const mainCollectionRef = collection(db, "Quickstep");
   const mainQuerySnapshot = await getDocs(mainCollectionRef);
 
   documents.value = await Promise.all(mainQuerySnapshot.docs.map(async (docSnapshot) => {

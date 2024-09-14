@@ -4,88 +4,88 @@
     h2 abbreviations
     .abbreviations
       .unit
-        h3 Align
+        strong Align
         span - Alignment
       .unit
-        h3 BOF
+        strong BOF
         span - Ball of foot
       .unit
-        h3 CBM
+        strong CBM
         span - Contrary Body Movement (CBM)
       .unit
-        h3 CBMP
+        strong CBMP
         span - Contrary Body Movement Position (CBMP)
       .unit
-        h3 Diag
+        strong Diag
         span - diagonal(ly)
       .unit
-        h3 e/0
+        strong e/0
         span - End of
       .unit
-        h3 F
+        strong F
         span - Foot
       .unit
-        h3 Fig
+        strong Fig
         span - Figure
       .unit
-        h3 fwd
+        strong fwd
         span - Forward
       .unit
-        h3 Fwk
+        strong Fwk
         span - Footwork
       .unit
-        h3 H
+        strong H
         span - Heel
       .unit
-        h3 IE
+        strong IE
         span - Inside edge
       .unit
-        h3 L
+        strong L
         span - Left
       .unit
-        h3 LOD
+        strong LOD
         span - Line of Dance (LOD)
       .unit
-        h3 Nat
+        strong Nat
         span - Natural
       .unit
-        h3 NFR
+        strong NFR
         span - Not foot rise
       .unit
-        h3 OP
+        strong OP
         span - Outside Partner (OP)
       .unit
-        h3 PP
+        strong PP
         span - Promenade position
       .unit
-        h3 PO
+        strong PO
         span - Partner ouside
       .unit
-        h3 Pos
+        strong Pos
         span - Position
       .unit
-        h3 Prog
+        strong Prog
         span - Progressive
       .unit
-        h3 Prom
+        strong Prom
         span - Promenade
       .unit
-        h3 Q
+        strong Q
         span - Quick
       .unit
-        h3 R
+        strong R
         span - Right
       .unit
-        h3 Rev
+        strong Rev
         span - Reverse
       .unit
-        h3 S
+        strong S
         span - Slow
       .unit
-        h3 St
+        strong St
         span - Straight
       .unit
-        h3 T
+        strong T
         span - Toe
   .column
     h2 General notes
@@ -183,17 +183,19 @@ p {
 
 }
 
+.column h2 {
+  display: block;
+  font-size: 18px;
+  margin: 10px 0 7px 0;
+}
+
 .notes {
   margin: 20px 0 0 0;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   column-gap: 25px;
 
-  h2 {
-    display: block;
-    font-size: 18px;
-    margin: 10px 0 0 0;
-  }
+
 
   .abbreviations {
     .unit {
@@ -205,7 +207,7 @@ p {
 
   .unit {
 
-    h3,
+    strong,
     .doc-button {
       font-size: 14px;
       display: inline-block;
@@ -228,6 +230,7 @@ p {
       border-radius: 5px;
       padding: 5px;
       margin: 5px 0 5px 20px;
+      color: #000;
     }
   }
 }
