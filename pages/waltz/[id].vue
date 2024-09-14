@@ -32,7 +32,7 @@ import MyIcon from '@/assets/svg/click.svg'
 definePageMeta({
   layout: "card"
 })
-
+    
 import { ref, onMounted } from 'vue'
 const showComponent = ref(false)
 
