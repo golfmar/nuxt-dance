@@ -12,12 +12,12 @@ div
           thead
             tr
               th(v-for="i in topColls" :key="index") {{ i }}
-          h3 Man
+          h3(v-if="documentsMan") Man
           tbody(v-if="documentsMan")
             tr( v-for="(key, index) in keys" :key="index"   ) 
               td {{key}}
               td(v-for="(item, i) in documentsMan[key]" :key="i"  v-html='item') 
-          h3 Lady
+          h3(v-if="documentsLady") Lady
           tbody(v-if="documentsLady")
             tr( v-for="(key, index) in keys" :key="index"   ) 
               td {{key}}

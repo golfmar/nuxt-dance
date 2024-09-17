@@ -17,6 +17,8 @@ div
             li
               NuxtLink(to='/quickstep' @click="OpenHeader=!OpenHeader") Quickstep
             li
+              NuxtLink(to='/foxtrot' @click="OpenHeader=!OpenHeader") Foxtrot
+            li
               NuxtLink(to='/add' @click="OpenHeader=!OpenHeader") add
       .menu-icon.hover-target(@click="OpenHeader=!OpenHeader" :class="[OpenHeader ? '_is-open' : '', { 'custom-position': isCustomLayout }]")
         span.menu-icon__line.menu-icon__line-left
@@ -47,25 +49,25 @@ const props = defineProps({
 // };
 
 
+// 
+// const closeHeader = () => {
+  // const wrapper = document.querySelector('.wrapper');
 
-const closeHeader = () => {
-  const wrapper = document.querySelector('.wrapper');
-
-  if (wrapper) {
-    wrapper.addEventListener("click", (e) => {
-      if (!e.target.closest(".menu-icon")) {
-        OpenHeader.value = false;
-      }
-      console.log(e.target, OpenHeader.value);
-    });
-  }
-};
+  // if (wrapper) {
+  //   wrapper.addEventListener("click", (e) => {
+  //     if (!e.target.closest(".menu-icon")) {
+  //       OpenHeader.value = false;
+  //     }
+  //     console.log(e.target, OpenHeader.value);
+  //   });
+  // }
+// };
 
 
 
 onMounted(() => {
   showComponent.value = true;
-  closeHeader();
+  // closeHeader();
 })
 
 </script>

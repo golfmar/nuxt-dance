@@ -1,7 +1,7 @@
 <template lang='pug'>
 div
   AppHeader(:is-custom-layout="true")
-  slot
+  NuxtPage
 </template>
 
 

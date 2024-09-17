@@ -2,7 +2,7 @@
 div
   transition(mode='easy-in-out' name='opentab')
     .container(v-if="showComponent") 
-      NuxtLink(:to="`/quickstep`" class='linkTo') Back to the figures
+      NuxtLink(:to="`/Foxtrot`" class='linkTo') Back to the figures
         MyIcon
       h1 {{id}} 
       VideoFirebase(:videoLink="video" v-if="video")
@@ -60,14 +60,14 @@ const Note = ref();
 const keys = ref();
 const fetchData = async () => {
   //   // Получение документов из основной коллекции
-  const mainCollectionRef = collection(db, "Quickstep");
+  const mainCollectionRef = collection(db, "Foxtrot");
   const mainQuerySnapshot = await getDocs(mainCollectionRef);
   //   // Извлечение данных только один раз для всех документов
   const firstDocSnapshot = mainQuerySnapshot.docs.id; // Берём id документ
-  const subCollectionRefMan = collection(db, "Quickstep", id, "Man");
-  const subCollectionRefLady = collection(db, "Quickstep", id, "Lady");
-  const subCollectionRefPRECEDE = collection(db, "Quickstep", id, "PRECEDE");
-  const subCollectionRefFOLLOW = collection(db, "Quickstep", id, "FOLLOW");
+  const subCollectionRefMan = collection(db, "Foxtrot", id, "Man");
+  const subCollectionRefLady = collection(db, "Foxtrot", id, "Lady");
+  const subCollectionRefPRECEDE = collection(db, "Foxtrot", id, "PRECEDE");
+  const subCollectionRefFOLLOW = collection(db, "Foxtrot", id, "FOLLOW");
   const subQuerySnapshotMan = await getDocs(subCollectionRefMan);
   const subQuerySnapshotLady = await getDocs(subCollectionRefLady);
   const subQuerySnapshotPRECEDE = await getDocs(subCollectionRefPRECEDE);
@@ -85,7 +85,7 @@ const fetchData = async () => {
     ...subDocSnapshot.data()
   }));
   try {
-    const docSnap = await getDoc(doc(db, "Quickstep", id));
+    const docSnap = await getDoc(doc(db, "Foxtrot", id));
     if (docSnap.exists()) {
       video.value = docSnap.data().video
       Note.value = docSnap.data().note

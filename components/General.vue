@@ -222,11 +222,10 @@ p {
       align-items: center;
 
     }
-
     p {
       transition: all 0.2s;
-      box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, .2), inset 0px 2px 1px 1px white, inset 0px -3px 1px 1px rgba(204, 198, 197, .5);
-      background: white;
+      box-shadow: 0px 0px 8px #f4f2f2;
+      background:  #fbfdfa;
       border-radius: 5px;
       padding: 5px;
       margin: 5px 0 5px 20px;

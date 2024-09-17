@@ -1,225 +1,9 @@
 <template lang="pug">
 .form-container
-    //- form(@submit.prevent="handleFertig")
-    //-   .input-field
-    //-     input(type='text' v-model="collectionName"  id="collectionName"   placeholder=' Denzel Washington')
-    //-     label.text-field__label(for="collectionName") collectionName
-    //-   .input-field
-    //-     input(type='text' v-model="figureName"  id="figureName"   placeholder=' Denzel Washington')
-    //-     label.text-field__label(for="figureName") figureName
-    //-   .input-field
-    //-     input(type='text' v-model="sex"  id="sex"   placeholder=' Denzel Washington')
-    //-     label.text-field__label(for="sex") sex
-    //-   button(type="submit") collection data fertig
     button(type='button' @click='dropClick')
-    textarea.drop-linea( v-model="drop")
-    .inputs
-      button.clear(type = "button"  @click='clear') clear
-      button(type = "button"  @click='clickHandler("RF")') RF
-      button(type = "button"  @click='clickHandler("Rf")') Rf
-      button(type = "button"  @click='clickHandler("LF")') LF
-      button(type = "button"  @click='clickHandler("L")') L
-      button(type = "button"  @click='clickHandler("R")') R
-      button(type = "button"  @click='clickHandler("T")') T
-      button(type = "button"  @click='clickHandler("HT")') HT
-      button(type = "button"  @click='clickHandler("TH")') TH
-      button(type = "button"  @click='clickHandler("St")') St
-      button(type = "button"  @click='clickHandler("DC")') DC
-      button(type = "button"  @click='clickHandler("DW")') DW
-      button(type = "button"  @click='clickHandler("Centre")') Centre
-    .inputs
-      button(type = "button"  @click='clickHandler("fwd")') fwd
-      button(type = "button"  @click='clickHandler("back")') back
-      button(type = "button"  @click='clickHandler("side")') side
-      button(type = "button"  @click='clickHandler("diag")') diag
-
-      button(type = "button"  @click='clickHandler("Down")') Down
-      button(type = "button"  @click='clickHandler("Up")') Up
-      button(type = "button"  @click='clickHandler("Lower")') Lower
-      button(type = "button"  @click='clickHandler("Rise")') Rise
-      button(type = "button"  @click='clickHandler("Pointing")') Pointing 
-    .inputs
-      button(type = "button"  @click='clickHandler("Start")') Start
-      button(type = "button"  @click='clickHandler("Continue")') Continue
-      button(type = "button"  @click='clickHandler("Facing")') Facing
-      button(type = "button"  @click='clickHandler("Backing")') Backing
-
-      button(type = "button"  @click='clickHandler("Slight")') Slight
-      button(type = "button"  @click='clickHandler("Body")') Body
-      button(type = "button"  @click='clickHandler("Along")') Along
-    .inputs
-      button(type = "button"  @click='clickHandler("against")') against
-      button(type = "button"  @click='clickHandler("across")') across
-      button(type = "button"  @click='clickHandler("and")') and
-      button(type = "button"  @click='clickHandler("close")') close
-      button(type = "button"  @click='clickHandler("close")') closes
-      button(type = "button"  @click='clickHandler("in")') in
-      button(type = "button"  @click='clickHandler("facing")') facing
-      button(type = "button"  @click='clickHandler("on")') on
-      button(type = "button"  @click='clickHandler("turn")') turn
-      button(type = "button"  @click='clickHandler("to")') to
-      button(type = "button"  @click='clickHandler("rise")') rise
-      button(type = "button"  @click='clickHandler("crosses")') crosses
-
-
-    .inputs
-      button(type = "button"  @click='clickHandler("e/o")') e/o
-      button(type = "button"  @click='clickHandler("between")') between
-      button(type = "button"  @click='clickHandler("behind")') behind
-      button(type = "button"  @click='clickHandler("slightly")') slightly
-      button(type = "button"  @click='clickHandler("without weight")') without weight
-      button(type = "button"  @click='clickHandler("H of LF, then")') H of LF, then
-      button(type = "button"  @click='clickHandler("Toes of both")') Toes of both
-      button(type = "button"  @click='clickHandler("feet")') feet
-
-
-      button(type = "button"  @click='clickHandler("No turn")') No turn
-    .inputs
-      button(type = "button"  @click='clickHandler("body")') body 
-      button(type = "button"  @click='clickHandler("Wall")') Wall
-      button(type = "button"  @click='clickHandler("completes")') completes
-      button(type = "button"  @click='clickHandler("body turns less")') body turns less
-
-
-
-
-      button(type = "button"  @click='clickHandler("NFR")') NFR
-      button(type = "button"  @click='clickHandler("LOD")') LOD
-      button(type = "button"  @click='clickHandler("PP")') PP
-      button(type = "button"  @click='clickHandler("CBM")') CBM
-      button(type = "button"  @click='clickHandler("CBMP")') CBMP
-    .inputs
-      button(type = "button"  @click='clickHandler("1")') 1
-      button(type = "button"  @click='clickHandler("2")') 2
-      button(type = "button"  @click='clickHandler("3")') 3
-      button(type = "button"  @click='clickHandler("4")') 4
-      button(type = "button"  @click='clickHandler("5")') 5
-      button(type = "button"  @click='clickHandler("6")') 6
-      button(type = "button"  @click='clickHandler("1/8")') 1/8
-      button(type = "button"  @click='clickHandler("3/8")') 3/8
-      button(type = "button"  @click='clickHandler("5/8")') 5/8
-      button(type = "button"  @click='clickHandler("1/4")') 1/4
-      button(type = "button"  @click='clickHandler("1/2")') 1/2
-    .inputs
-      button(type = "button"  @click='clickHandler(" - ")') -
-      button(type = "button"  @click='clickHandler("&lt;br&gt;")') &lt;br&gt;
-
-     
-  
-    form(@submit.prevent="handleSubmit")
-      div
-
-        //- input(type="radio" name="option" value="option1" id="option1") 
-        //- label(for="option1") 1
-        input(v-model="myArray1Item" type="text" id="myArray1Item" @focus=" myArray1Item=drop; drop = '';" )
-  
-      div
-
-        //- input(type="radio" name="option" value="option1" id="option2" ) 
-        //- label(for="option2") 2
-        input(v-model="myArray2Item" type="text" id="myArray2Item" @focus="myArray2Item=drop; drop = '';")
-  
-      div
-
-        //- input(type="radio" name="option" value="option1" id="option3") 
-        //- label(for="option3") 3
-        input(v-model="myArray3Item" type="text" id="myArray3Item" @focus="myArray3Item=drop; drop = '';")
-  
-      div
-
-        //- input(type="radio" name="option" value="option1" id="option4") 
-        //- label(for="option4") 4
-        input(v-model="myArray4Item" type="text" id="myArray4Item" @focus="myArray4Item=drop; drop = '';")
-  
-      div
-
-        //- input(type="radio" name="option" value="option1" id="option5") 
-        //- label(for="option5") 5
-        input(v-model="myArray5Item" type="text" id="myArray5Item" @focus="myArray5Item=drop; drop = '';")
-  
-      div
-
-        //- input(type="radio" name="option" value="option1" id="option6" ) 
-        //- label(for="option6") 6
-        input(v-model="myArray6Item" type="text" id="myArray6Item" @focus="myArray6Item=drop; drop = '';")
-  
-      button(type="submit"   ) Add to Arrays
-  
-    // Сообщение об успешном добавлении
     p(v-if="message") {{ message }}
 
-
-
-
-
-//- <div class="unit">  
-//- <h3>Note Man</h3>  
-//- <p> 
-
-//- </p>
-//- </div> 
-           
-<div class="unit"> 
-<h3>Note</h3>  
-<p>
-The Quarter Turn to R may start facing LOD, amount of turn will then be 1/4 between 1 and 2, lady 3/8 between 1 and 2,<br>
-body turns less.
-</p>  
-</div>
-
-
-
-      
-<div class="unit">
-<h3>PRECEDE</h3>
-<div>
-<h4> Associate: </h4>  
-At Turn or Not Pivot Turn at a corner ended facing DW of new LOD or facing new LOG.<br>
-When started RF fwd OP: Prog Chasse, Fwd Lock Step, Running Finish.
-</div> 
-
-<div> 
-<h4>Member:</h4> 
-Running Right Turn ended LOSE or DW, For Q Run, FishTail, Telemark, Nat Turn Back Lock<br>
-Running Finish.
-</div> 
-</div>   
-                     
-<div class="unit">  
-<h3>FOLLOW</h3>   
-<div> 
-<h4> Associate: </h4>
-Prog Chasse, Rev Pivot.
-</div>  
-
-<div> 
-<h4>Member:</h4> 
-Four Q Run. Near a corner 2-4 of Back Lock Running Finish ended facing new LOD.
-</div> 
-</div>  
-                              
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 </template>
-
 <script setup>
 import { ref } from 'vue';
 import { db } from '@/composables/firebase'; // Импортируйте Firebase и Firestore
@@ -253,83 +37,70 @@ const clear = () => {
 };
 
 
-// "Waltz"
-// "RF Closed Change (Natural to Reverse)"
-// "Lady"
-
-
-
-
-// // Шаг 1: Получите доступ к документу и вложенной коллекции
-// const mainDocRef = doc(db, "Waltz", "Weave in Waltz Time");
-// const subDocRef = doc(collection(mainDocRef, "Man"), "steps");
-// // const subDocRef = doc(collection(mainDocRef, "Lady"), "steps");
-
-
-// <br>
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
 
 const steps1 = [
-  "LF back",
+  "RF back",
   "TH",
-  "Backing DW",
-  "Start to turn On 1 ",
-  "Start to rise e/o<br>1 NFR",
+  "Backing DC",
+  "Start to turn L on 1",
+  "Rise slightly e/o<br>1 NFR",
   "1",
   "St",
   "S",
-];
-
+]
 const steps2 = [
-  "RF to side",
-  "T",
-  "Pointing DC",
-  "1/4 between 1 and 2,<br> body turns less",
-  "Continue to rise<br> on 2",
+  "LF closes to RF<br>(H Turn )",
+  "HT",
+  "Facing LOD",
+  "3/8 between 1 and 2",
+  "Continue to rise<br>on 2",
   "-",
-  "L",
+  "R",
   "Q",
-];
+]
 const steps3 = [
-  "LF closes to RF",
-  "T",
-  "Facing DC",
-  "Slight body turn<br> on 3",
-  "Continue to rise<br>on 3",
-  "-",
-  "L",
-  "Q",
-];
-const steps4 = [
-  "RF diag fwd",
+  "RF diag fwd R<br>shoulder leading<br>in PP",
   "TH",
-  "Facing DC",
-  "No turn on 4",
-  "Up on 4<br>Lower e/o 4",
-  "-",
+  "Pointing to<br>LOD",
+  "Body turn to L<br>on 3",
+  "Up on 3<br>Lower e / o 3",
+"-",
+  "St",
+  "Q",
+]
+const steps4 = [
+  "LF fwd and across<br>in CBMP and PP",
+  "HT",
+  "Moving DW,<br>pointing to<br>LOD",
+  "Continue to turn<br>L on 4",
+  "Down on 4<br>Rise e/o 4",
+  "4",
   "St",
   "S",
-];
+]
 const steps5 = [
-
-];
+  "RF to side and<br>slightly back",
+  "TH",
+  "Backing<br>Wall",
+  "1/4 between 4 and 5 ",
+  "Up on 5",
+  "-",
+  "L",
+  "Q",
+]
 const steps6 = [
-
-];
+  "LF back in CBMP",
+  "TH",
+  "Backing DW",
+  "1/8 between 5 and 6,<br>body turns less",
+  "Up on 6 NFR<br>Lower e/o 6",
+  "-",
+  "L",
+  "Q",
+]
 
 
 const uploadDataToFirebase = async () => {
@@ -339,15 +110,20 @@ const uploadDataToFirebase = async () => {
       2: steps2,
       3: steps3,
       4: steps4,
-      // 5: steps5,
-      // 6: steps6,
+      5: steps5,
+      6: steps6,
+      // 7: steps7,
+      // 8: steps8,
+      // 9: steps9,
+      // 10: steps10,
+     
     };
 
-    const mainDocRef = doc(db, "Quickstep",
-      "Quater Turn to Right"
+    const mainDocRef = doc(db, "Foxtrot",
+      "Telemark"
     );
-    // await setDoc(doc(collection(mainDocRef, "Man"), "steps"), data);
-    await setDoc(doc(collection(mainDocRef, "Lady"), "steps"), data);
+    await setDoc(doc(collection(mainDocRef, "Man"), "steps"), data);
+    // await setDoc(doc(collection(mainDocRef, "Lady"), "steps"), data);
     alert("Массив успешно загружен в Firebase");
   } catch (e) {
     alert("Ошибка при загрузке данных: ");

@@ -596,6 +596,150 @@ h3 {
 
 
 
+    textarea.drop-linea( v-model="drop")
+    .inputs
+      button.clear(type = "button"  @click='clear') clear
+      button(type = "button"  @click='clickHandler("RF")') RF
+      button(type = "button"  @click='clickHandler("Rf")') Rf
+      button(type = "button"  @click='clickHandler("LF")') LF
+      button(type = "button"  @click='clickHandler("L")') L
+      button(type = "button"  @click='clickHandler("R")') R
+      button(type = "button"  @click='clickHandler("T")') T
+      button(type = "button"  @click='clickHandler("HT")') HT
+      button(type = "button"  @click='clickHandler("TH")') TH
+      button(type = "button"  @click='clickHandler("St")') St
+      button(type = "button"  @click='clickHandler("DC")') DC
+      button(type = "button"  @click='clickHandler("DW")') DW
+      button(type = "button"  @click='clickHandler("Centre")') Centre
+    .inputs
+      button(type = "button"  @click='clickHandler("fwd")') fwd
+      button(type = "button"  @click='clickHandler("back")') back
+      button(type = "button"  @click='clickHandler("side")') side
+      button(type = "button"  @click='clickHandler("diag")') diag
+
+      button(type = "button"  @click='clickHandler("Down")') Down
+      button(type = "button"  @click='clickHandler("Up")') Up
+      button(type = "button"  @click='clickHandler("Lower")') Lower
+      button(type = "button"  @click='clickHandler("Rise")') Rise
+      button(type = "button"  @click='clickHandler("Pointing")') Pointing 
+    .inputs
+      button(type = "button"  @click='clickHandler("Start")') Start
+      button(type = "button"  @click='clickHandler("Continue")') Continue
+      button(type = "button"  @click='clickHandler("Facing")') Facing
+      button(type = "button"  @click='clickHandler("Backing")') Backing
+
+      button(type = "button"  @click='clickHandler("Slight")') Slight
+      button(type = "button"  @click='clickHandler("Body")') Body
+      button(type = "button"  @click='clickHandler("Along")') Along
+    .inputs
+      button(type = "button"  @click='clickHandler("against")') against
+      button(type = "button"  @click='clickHandler("across")') across
+      button(type = "button"  @click='clickHandler("and")') and
+      button(type = "button"  @click='clickHandler("close")') close
+      button(type = "button"  @click='clickHandler("close")') closes
+      button(type = "button"  @click='clickHandler("in")') in
+      button(type = "button"  @click='clickHandler("facing")') facing
+      button(type = "button"  @click='clickHandler("on")') on
+      button(type = "button"  @click='clickHandler("turn")') turn
+      button(type = "button"  @click='clickHandler("to")') to
+      button(type = "button"  @click='clickHandler("rise")') rise
+      button(type = "button"  @click='clickHandler("crosses")') crosses
 
 
+    .inputs
+      button(type = "button"  @click='clickHandler("e/o")') e/o
+      button(type = "button"  @click='clickHandler("between")') between
+      button(type = "button"  @click='clickHandler("behind")') behind
+      button(type = "button"  @click='clickHandler("slightly")') slightly
+      button(type = "button"  @click='clickHandler("without weight")') without weight
+      button(type = "button"  @click='clickHandler("H of LF, then")') H of LF, then
+      button(type = "button"  @click='clickHandler("Toes of both")') Toes of both
+      button(type = "button"  @click='clickHandler("feet")') feet
+
+
+      button(type = "button"  @click='clickHandler("No turn")') No turn
+    .inputs
+      button(type = "button"  @click='clickHandler("body")') body 
+      button(type = "button"  @click='clickHandler("Wall")') Wall
+      button(type = "button"  @click='clickHandler("completes")') completes
+      button(type = "button"  @click='clickHandler("body turns less")') body turns less
+
+
+
+
+      button(type = "button"  @click='clickHandler("NFR")') NFR
+      button(type = "button"  @click='clickHandler("LOD")') LOD
+      button(type = "button"  @click='clickHandler("PP")') PP
+      button(type = "button"  @click='clickHandler("CBM")') CBM
+      button(type = "button"  @click='clickHandler("CBMP")') CBMP
+    .inputs
+      button(type = "button"  @click='clickHandler("1")') 1
+      button(type = "button"  @click='clickHandler("2")') 2
+      button(type = "button"  @click='clickHandler("3")') 3
+      button(type = "button"  @click='clickHandler("4")') 4
+      button(type = "button"  @click='clickHandler("5")') 5
+      button(type = "button"  @click='clickHandler("6")') 6
+      button(type = "button"  @click='clickHandler("1/8")') 1/8
+      button(type = "button"  @click='clickHandler("3/8")') 3/8
+      button(type = "button"  @click='clickHandler("5/8")') 5/8
+      button(type = "button"  @click='clickHandler("1/4")') 1/4
+      button(type = "button"  @click='clickHandler("1/2")') 1/2
+    .inputs
+      button(type = "button"  @click='clickHandler(" - ")') -
+      button(type = "button"  @click='clickHandler("&lt;br&gt;")') &lt;br&gt;
+
+     
+  
+    form(@submit.prevent="handleSubmit")
+      div
+
+        //- input(type="radio" name="option" value="option1" id="option1") 
+        //- label(for="option1") 1
+        input(v-model="myArray1Item" type="text" id="myArray1Item" @focus=" myArray1Item=drop; drop = '';" )
+  
+      div
+
+        //- input(type="radio" name="option" value="option1" id="option2" ) 
+        //- label(for="option2") 2
+        input(v-model="myArray2Item" type="text" id="myArray2Item" @focus="myArray2Item=drop; drop = '';")
+  
+      div
+
+        //- input(type="radio" name="option" value="option1" id="option3") 
+        //- label(for="option3") 3
+        input(v-model="myArray3Item" type="text" id="myArray3Item" @focus="myArray3Item=drop; drop = '';")
+  
+      div
+
+        //- input(type="radio" name="option" value="option1" id="option4") 
+        //- label(for="option4") 4
+        input(v-model="myArray4Item" type="text" id="myArray4Item" @focus="myArray4Item=drop; drop = '';")
+  
+      div
+
+        //- input(type="radio" name="option" value="option1" id="option5") 
+        //- label(for="option5") 5
+        input(v-model="myArray5Item" type="text" id="myArray5Item" @focus="myArray5Item=drop; drop = '';")
+  
+      div
+
+        //- input(type="radio" name="option" value="option1" id="option6" ) 
+        //- label(for="option6") 6
+        input(v-model="myArray6Item" type="text" id="myArray6Item" @focus="myArray6Item=drop; drop = '';")
+  
+      button(type="submit"   ) Add to Arrays
+  
+    // Сообщение об успешном добавлении
+    
+    //- form(@submit.prevent="handleFertig")
+    //-   .input-field
+    //-     input(type='text' v-model="collectionName"  id="collectionName"   placeholder=' Denzel Washington')
+    //-     label.text-field__label(for="collectionName") collectionName
+    //-   .input-field
+    //-     input(type='text' v-model="figureName"  id="figureName"   placeholder=' Denzel Washington')
+    //-     label.text-field__label(for="figureName") figureName
+    //-   .input-field
+    //-     input(type='text' v-model="sex"  id="sex"   placeholder=' Denzel Washington')
+    //-     label.text-field__label(for="sex") sex
+    //-   button(type="submit") collection data fertig
 

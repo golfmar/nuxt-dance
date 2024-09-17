@@ -1,6 +1,6 @@
 <template lang='pug'>
 div
   AppHeader
-  slot
+  NuxtPage
   //- AppFooter
 </template>
