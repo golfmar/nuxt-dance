@@ -40,67 +40,67 @@ const clear = () => {
 
 
 
-
 const steps1 = [
-  "RF back",
+  "LF back",
   "TH",
-  "Backing DC",
-  "Start to turn L on 1",
+  "Backing DW",
+  "Start to turn R on 1",
   "Rise slightly e/o<br>1 NFR",
   "1",
   "St",
   "S",
 ]
 const steps2 = [
-  "LF closes to RF<br>(H Turn )",
+  "RF closes to LF<br>(H Turn)",
   "HT",
   "Facing LOD",
   "3/8 between 1 and 2",
-  "Continue to rise<br>on 2",
+  "Continue to rise<br>on 2 NFR",
+  "-",
+  "L",
+  "Q",
+]
+const steps3 = [
+  "LF to side",
+  "T",
+  "Backing DC",
+  "3/8 between 2 and 3",
+  "Down on 3<br>Rise e/o 3",
   "-",
   "R",
   "Q",
 ]
-const steps3 = [
-  "RF diag fwd R<br>shoulder leading<br>in PP",
-  "TH",
-  "Pointing to<br>LOD",
-  "Body turn to L<br>on 3",
-  "Up on 3<br>Lower e / o 3",
-"-",
-  "St",
-  "Q",
-]
 const steps4 = [
-  "LF fwd and across<br>in CBMP and PP",
-  "HT",
-  "Moving DW,<br>pointing to<br>LOD",
-  "Continue to turn<br>L on 4",
-  "Down on 4<br>Rise e/o 4",
-  "4",
-  "St",
+  "RF brushes to LF",
+  "T of LF and<br>IE of T RF",
+  "Backing DC",
+  "Slight body turn<br>to R on 4",
+  "Up on 4",
+  "-",
+  "R",
   "S",
 ]
 const steps5 = [
-  "RF to side and<br>slightly back",
+  "RF diag back",
   "TH",
-  "Backing<br>Wall",
-  "1/4 between 4 and 5 ",
+  "Backing DC",
+  "No turn on 5",
   "Up on 5",
   "-",
-  "L",
+  "St",
   "Q",
 ]
 const steps6 = [
   "LF back in CBMP",
   "TH",
-  "Backing DW",
-  "1/8 between 5 and 6,<br>body turns less",
+  "Backing DC",
+  "No turn on 6",
   "Up on 6 NFR<br>Lower e/o 6",
   "-",
-  "L",
+  "St",
   "Q",
 ]
+
 
 
 const uploadDataToFirebase = async () => {
@@ -116,14 +116,14 @@ const uploadDataToFirebase = async () => {
       // 8: steps8,
       // 9: steps9,
       // 10: steps10,
-     
+
     };
 
     const mainDocRef = doc(db, "Foxtrot",
-      "Telemark"
+      "Natural Hover Telemark"
     );
-    await setDoc(doc(collection(mainDocRef, "Man"), "steps"), data);
-    // await setDoc(doc(collection(mainDocRef, "Lady"), "steps"), data);
+    // await setDoc(doc(collection(mainDocRef, "Man"), "steps"), data);
+    await setDoc(doc(collection(mainDocRef, "Lady"), "steps"), data);
     alert("Массив успешно загружен в Firebase");
   } catch (e) {
     alert("Ошибка при загрузке данных: ");
