@@ -224,7 +224,6 @@ const dropClick = () => {
 // 	myArray6Item.value = '';
 // }
 
-
 </script>
 
 <style lang="scss" scoped>
