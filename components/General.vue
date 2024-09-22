@@ -178,14 +178,14 @@ const handlerClick = async (el) => {
 <style lang='scss' scoped>
 p {
   margin: 0 0 0 5px;
-  font-size: 18px;
+ 
   line-height: 1.2;
 
 }
 
 .column h2 {
   display: block;
-  font-size: 18px;
+
   margin: 10px 0 7px 0;
 }
 
@@ -195,9 +195,9 @@ p {
   grid-template-columns: repeat(3, 1fr);
   column-gap: 25px;
 
-@media (max-width: 767px){
-  grid-template-columns:  1fr;
-}
+  @media (max-width: 767px) {
+    grid-template-columns: 1fr;
+  }
 
   .abbreviations {
     .unit {
@@ -222,12 +222,13 @@ p {
       background: transparent;
       display: flex;
       align-items: center;
-text-align: left;
+      text-align: left;
     }
+
     p {
       transition: all 0.2s;
       box-shadow: 0px 0px 8px #f4f2f2;
-      background:  #fbfdfa;
+      background: #fbfdfa;
       border-radius: 5px;
       padding: 5px;
       margin: 5px 0 5px 20px;
