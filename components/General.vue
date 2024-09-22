@@ -223,6 +223,7 @@ p {
       display: flex;
       align-items: center;
       text-align: left;
+      margin: 0 0 0 0;
     }
 
     p {
