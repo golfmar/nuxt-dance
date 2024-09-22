@@ -114,11 +114,13 @@ const fetchData = async () => {
 	} else {
 		documentsLady.value = subCollectionArrayLady[0];
 	}
+
+	emit('Fertig', true)
 	documentsPRECEDE.value = subCollectionArrayPRECEDE;
 	documentsFOLLOW.value = subCollectionArrayFOLLOW;
 	keys.value = Object.keys(documentsMan.value)
 	
-	emit('Fertig', true)
+	
 };
 
 onMounted(async () => {
