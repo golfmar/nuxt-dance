@@ -54,28 +54,28 @@ const handleWindowScroll = () => {
 
 
 // 
-const closeHeader = () => {
-  const wrapper = document.querySelector('.wrapper');
-  const body = document.querySelector('body');
+// const closeHeader = () => {
+//   const wrapper = document.querySelector('.wrapper');
+//   const body = document.querySelector('body');
 
-  if (wrapper) {
-    wrapper.addEventListener("click", (e) => {
-      if (!e.target.closest(".menu-icon")) {
-        OpenHeader.value = false;
-        body.classList.remove("_lock");
-      }else{
-        body.classList.add("_lock");
-      }
+//   if (wrapper) {
+//     wrapper.addEventListener("click", (e) => {
+//       if (!e.target.closest(".menu-icon")) {
+//         OpenHeader.value = false;
+//         body.classList.remove("_lock");
+//       }else{
+//         body.classList.add("_lock");
+//       }
       
-    });
-  }
-};
+//     });
+//   }
+// };
 
 
 
 onMounted(() => {
   showComponent.value = true;
-  closeHeader();
+  // closeHeader();
   // handleWindowScroll();
 })
 

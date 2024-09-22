@@ -23,42 +23,16 @@
 <script setup>
 import { onMounted, ref } from 'vue'
 import MyIcon from '@/assets/svg/click.svg'
-import { db } from "@/composables/firebase.ts";
-import { collection, getDocs } from "firebase/firestore";
+import { useFetchDocuments } from '@/composables/useFetchDocuments'
+
 definePageMeta({
   layout: "card"
 })
+
 const showComponent = ref(false)
-
-const documents = ref([]);
-const fetchData = async () => {
-  // Получение документов из основной коллекции
-  const mainCollectionRef = collection(db, "Foxtrot");
-  const mainQuerySnapshot = await getDocs(mainCollectionRef);
-
-  documents.value = await Promise.all(mainQuerySnapshot.docs.map(async (docSnapshot) => {
-    // const docData = docSnapshot.data();
-
-    // Получение вложенной коллекции
-    // const subCollectionRef = collection(db, "Waltz", docSnapshot.id, 'Man');
-    // const subQuerySnapshot = await getDocs(subCollectionRef);
-
-    // const subCollectionArray = subQuerySnapshot.docs.map(subDocSnapshot => ({
-    //   // id: subDocSnapshot.id,
-    //   ...subDocSnapshot.data()
-    // }));
-
-    return {
-      // ---здесь нужно только id которое посылается на дочерний
-      // id: docSnapshot.id.replace(/\s+/g, '-'),
-      id: docSnapshot.id.replace(/\s+/g, '--'),
-      // subCollectionArray
-    };
-  }));
-};
+const { documents } = useFetchDocuments('Foxtrot')
 
 onMounted(() => {
-  fetchData();
   showComponent.value = true
 });
 </script>
