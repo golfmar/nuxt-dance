@@ -1,5 +1,5 @@
 <template lang='pug'>
-div
+.common-id.page
   transition(mode='easy-in-out' name='opentab')
     .container(v-if="showComponent") 
       NuxtLink(:to="`/Foxtrot`" class='linkTo') Back to the figures
@@ -11,17 +11,17 @@ div
         table.gros
           thead
             tr
-              th(v-for="i in topColls" :key="index") {{ i }}
+              th(v-for="i in topColls" :key="index" v-html='i') 
           h3(v-if="documentsMan") Man
           tbody(v-if="documentsMan")
             tr( v-for="(key, index) in keys" :key="index"   ) 
-              td {{key}}
-              td(v-for="(item, i) in documentsMan[key]" :key="i"  v-html='item') 
+              td(data-label="Step") {{key}}
+              td(v-for="(item, i) in documentsMan[key]" :key="i"  v-html='item' :data-label="topColls[i+1]") 
           h3(v-if="documentsLady") Lady
           tbody(v-if="documentsLady")
             tr( v-for="(key, index) in keys" :key="index"   ) 
-              td {{key}}
-              td(v-for="(item, i) in documentsLady[key]" :key="i"  v-html='item')
+              td(data-label="Step") {{key}}
+              td(v-for="(item, i) in documentsLady[key]" :key="i"  v-html='item' :data-label="topColls[i+1]")
       .Note(v-html='Note')
       General
 
@@ -127,146 +127,10 @@ onMounted(async () => {
 });
 </script>
 <style lang='scss' scoped>
-.linkTo {
-  margin: 0 0 30px 0;
-}
-
-h2 {
-  font-family: "RR", sans-serif;
-  margin: 0 0 10px 0;
-}
-
-.card {
-  margin: 20px 0 0 0;
-}
-
-table {
-  &.gros {
-    width: auto;
-    margin: 10px 0 0 0;
-    background: #fff;
-    border: 2px solid #2d019b;
-    box-shadow: 0px 0px 8px #f4f2f2;
-    font-family: "Roboto-Regular", sans-serif;
-    font-size: 1rem;
-    font-weight: 400;
-    color: #000;
-
-    h3 {
-      display: block;
-      font-size: 14px;
-      line-height: 1;
-      padding: 6px 2px;
-      margin: 0 0 0 2px;
-    }
-
-
-    thead tr {
-
-      th {
-        font-size: 14px;
-        font-weight: 400;
-        line-height: 1;
-        text-shadow: none;
-        // text-align: center;
-        text-transform: uppercase;
-        background-color: #9167fc;
-        color: #fff;
-        padding: 6px 33px 4px 5px;
-        white-space: nowrap;
-        border: 1px solid #fff;
-      }
-    }
-
-    tbody {
-      td {
-        width: auto;
-        white-space: pre-wrap;
-        padding: 6px 33px 4px 5px;
-        text-align: left;
-        border: 1px solid $blue-grey-3;
-      }
-
-      tr {
-        &:nth-child(2n) {
-          background-color: $blue-grey-1;
-        }
-      }
-    }
-  }
-
-  &.clein {
-    margin: 10px 0 0 0;
-
-    tr {
-      border-top: 5px solid transparent;
-      border-bottom: 15px solid transparent;
-    }
-
-    th {
-      white-space: nowrap;
-      padding: 0 20px 8px 0;
-    }
-
-    th,
-    td {
-      vertical-align: top;
-    }
-
-    td {
-      display: inline-grid;
-      row-gap: 5px;
-
-      &:not(:has(p)) div {
-        padding: 8px 0 3px;
-      }
-    }
-
-    p div {
-      padding: 3px 8px 3px 3px;
-    }
-  }
-}
-
-h3 {
-  font-size: 14px;
-  line-height: 1;
-  padding: 2px 0;
-}
-
-.recomendet {
-  display: grid;
-  grid-template-columns: repeat(3, max-content);
-  column-gap: 6px;
-
-  .Note {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    margin: 0 0 0 20px;
-
-    p {
-      position: relative;
-      opacity: .6;
-      white-space: nowrap;
-
-      &::after {
-        content: "";
-        position: absolute;
-        background-color: red;
-        width: 2px;
-        height: 100%;
-        top: 0;
-        left: -6px;
-      }
-    }
-  }
-}
-
 .Note {
   ::v-deep .unit {
     display: grid;
-    grid-template-rows: max-content 1fr;
+   
     grid-template-columns: 100px 1fr;
     column-gap: 5px;
     margin: 15px 0 0 0;
@@ -280,30 +144,8 @@ h3 {
     div {
       display: grid;
       margin: 0 0 5px 0;
-      grid-template-columns: max-content 1fr;
-      column-gap: 15px;
-
-    }
-
-    h4 {
-      // display: inline-block;
+      grid-template-rows: max-content 1fr;
     }
   }
-}
-
-.linkTo {
-  @include ts;
-  color: azure;
-
-}
-
-.opentab-enter-from {
-  opacity: 0;
-  transition: opacity .3s ease-in-out;
-}
-
-.opentab-enter-to {
-  opacity: 1;
-  transition: opacity .3s ease-in-out;
 }
 </style>

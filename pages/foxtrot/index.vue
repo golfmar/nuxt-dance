@@ -1,5 +1,5 @@
 <template lang='pug'>
-div
+.common-page.page
   transition(mode='easy-in-out' name='opentab')
     .container(v-if="showComponent") 
       h1 FOXTROT
@@ -62,51 +62,3 @@ onMounted(() => {
   showComponent.value = true
 });
 </script>
-<style lang='scss' scoped>
-li {
-  margin: 15px 0 0 0;
-  display: flex;
-  column-gap: 20px;
-  align-items: center;
-}
-
-p {
-  line-height: 1.4;
-}
-
-h2 {
-  display: block;
-}
-
-h3 {
-  position: relative;
-  transition: all 0.2s;
-
-  &:hover {
-    color: brown;
-  }
-
-  .linkTo {
-    position: absolute;
-    top: 0%;
-    width: 100%;
-    height: 100%;
-    left: 0;
-
-    svg {
-      position: absolute;
-      right: -20px;
-    }
-  }
-}
-
-.opentab-enter-from {
-  opacity: 0;
-  transition: opacity .5s ease-in-out;
-}
-
-.opentab-enter-to {
-  opacity: 1;
-  transition: opacity .5s ease-in-out;
-}
-</style>

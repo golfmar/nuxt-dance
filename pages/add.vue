@@ -37,71 +37,36 @@ const clear = () => {
 };
 
 
-
-
-
-
-
 const steps1 = [
-  "LF back",
-  "TH",
-  "Backing DW",
-  "Start to turn R on 1",
-  "Rise slightly e/o<br>1 NFR",
-  "1",
+  "LF fwd",
+  "HT",
+  "Facing DW",
+  "No turn",
+  "Rise e/o 1",
+  "Slight<br>on 1",
   "St",
   "S",
-]
+];
 const steps2 = [
-  "RF closes to LF<br>(H Turn)",
-  "HT",
-  "Facing LOD",
-  "3/8 between 1 and 2",
-  "Continue to rise<br>on 2 NFR",
+  "RF to side",
+  "T",
+  "Facing DW",
+  "-",
+  "Up on 2",
   "-",
   "L",
   "Q",
-]
+];
 const steps3 = [
-  "LF to side",
-  "T",
-  "Backing DC",
-  "3/8 between 2 and 3",
-  "Down on 3<br>Rise e/o 3",
-  "-",
-  "R",
-  "Q",
-]
-const steps4 = [
-  "RF brushes to LF",
-  "T of LF and<br>IE of T RF",
-  "Backing DC",
-  "Slight body turn<br>to R on 4",
-  "Up on 4",
-  "-",
-  "R",
-  "S",
-]
-const steps5 = [
-  "RF diag back",
+  "LF closes to RF",
   "TH",
-  "Backing DC",
-  "No turn on 5",
-  "Up on 5",
+  "Facing DW",
   "-",
-  "St",
-  "Q",
-]
-const steps6 = [
-  "LF back in CBMP",
-  "TH",
-  "Backing DC",
-  "No turn on 6",
-  "Up on 6 NFR<br>Lower e/o 6",
+  "Up on 3. Lower<br>e/o 3",
   "-",
-  "St",
+  "L",
   "Q",
-]
+];
 
 
 
@@ -111,21 +76,23 @@ const uploadDataToFirebase = async () => {
       1: steps1,
       2: steps2,
       3: steps3,
-      4: steps4,
-      5: steps5,
-      6: steps6,
+      // 4: steps4,
+      // 5: steps5,
+      // 6: steps6,
       // 7: steps7,
       // 8: steps8,
       // 9: steps9,
       // 10: steps10,
+      // 11: steps11,
+      // 12: steps12,
 
     };
 
-    const mainDocRef = doc(db, "Foxtrot",
-      "Natural Hover Telemark"
+    const mainDocRef = doc(db, "Quickstep",
+      "Cross Chasse"
     );
-    // await setDoc(doc(collection(mainDocRef, "Man"), "steps"), data);
-    await setDoc(doc(collection(mainDocRef, "Lady"), "steps"), data);
+    await setDoc(doc(collection(mainDocRef, "Man"), "steps"), data);
+    // await setDoc(doc(collection(mainDocRef, "Lady"), "steps"), data);
     alert("Массив успешно загружен в Firebase");
   } catch (e) {
     alert("Ошибка при загрузке данных: ");

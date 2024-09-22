@@ -1,7 +1,7 @@
 <template lang='pug'>
-div
+#home
   transition(mode='easy-in-out' name='opentab')
-    #home(v-if="showComponent")
+    div(v-if="showComponent")
       .big-circles
         .big-circle
         .big-circle
@@ -35,37 +35,30 @@ onMounted(() => {
 
 
 <style lang='scss' scoped>
-#home {}
-
-
 .cover-wrapper {
-
   display: flex;
   flex-direction: column;
   justify-content: center;
+  padding: 0 10px;
+  h1{
+    font-size: 40px;
+  }
 }
 
-h1 {
-  font-size: 40px;
-  text-align: center;
-}
+
 
 p {
   font-family: "RR", sans-serif;
   font-size: 20px;
   text-align: center;
   color: azure;
+  margin: 20px 0 0 0;
 }
 
-.opentab-enter-from {
-  opacity: 0;
-  transition: opacity .5s ease-in-out;
+@media (max-width: 767px) {
+  p {
+
+    font-size: 15px;
+  }
 }
-
-.opentab-enter-to {
-  opacity: 1;
-  transition: opacity .5s ease-in-out;
-}
-
-
 </style>

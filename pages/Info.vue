@@ -1,5 +1,5 @@
 <template lang='pug'>
-div
+.page
   transition(mode='easy-in-out' name='opentab')
     .container(v-if="showComponent")
       h1 common info

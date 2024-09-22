@@ -1,9 +1,10 @@
 <template lang='pug'>
 div
   transition(mode='easy-in-out' name='opentab')
-    header.header(v-if="showComponent")
+    header.header(v-if="showComponent" ref='some')
       .decor1(:class="[(OpenHeader) ? '_is-open' : '']") 
       .decor2(:class="[(OpenHeader) ? '_is-open' : '']") 
+      .decor3(:class="[(OpenHeader) ? '_is-open' : '']") 
       nav(:class="[(OpenHeader) ? '_is-open' : '']") 
           ul
             li
@@ -19,7 +20,11 @@ div
             li
               NuxtLink(to='/foxtrot' @click="OpenHeader=!OpenHeader") Foxtrot
             li
-              NuxtLink(to='/add' @click="OpenHeader=!OpenHeader") add
+              NuxtLink(to='/tango' @click="OpenHeader=!OpenHeader") Tango
+            li
+              NuxtLink(to='/social' @click="OpenHeader=!OpenHeader") Social Rhythm
+            li
+              NuxtLink(to='/amalgam' @click="OpenHeader=!OpenHeader") Amalgamation
       .menu-icon.hover-target(@click="OpenHeader=!OpenHeader" :class="[OpenHeader ? '_is-open' : '', { 'custom-position': isCustomLayout }]")
         span.menu-icon__line.menu-icon__line-left
         span.menu-icon__line
@@ -30,7 +35,7 @@ div
 import { ref, onMounted } from 'vue'
 var OpenHeader = ref(false);
 const showComponent = ref(false)
-
+const some = ref(null)
 const props = defineProps({
   isCustomLayout: {
     type: Boolean,
@@ -39,35 +44,39 @@ const props = defineProps({
 })
 
 
-// const handleWindowScroll = () => {
-//   const header = document.querySelector('.header')
-//   if (window.pageYOffset > 60) {
-//     header.classList.add("responciveHeader");
-//   } else {
-//     header.classList.remove("responciveHeader");
-//   }
-// };
+const handleWindowScroll = () => {
+  if (window.pageYOffset > 60) {
+    some.value.classList.add("responciveHeader");
+  } else {
+    some.value.classList.remove("responciveHeader");
+  }
+};
 
 
 // 
-// const closeHeader = () => {
-  // const wrapper = document.querySelector('.wrapper');
+const closeHeader = () => {
+  const wrapper = document.querySelector('.wrapper');
+  const body = document.querySelector('body');
 
-  // if (wrapper) {
-  //   wrapper.addEventListener("click", (e) => {
-  //     if (!e.target.closest(".menu-icon")) {
-  //       OpenHeader.value = false;
-  //     }
-  //     console.log(e.target, OpenHeader.value);
-  //   });
-  // }
-// };
+  if (wrapper) {
+    wrapper.addEventListener("click", (e) => {
+      if (!e.target.closest(".menu-icon")) {
+        OpenHeader.value = false;
+        body.classList.remove("_lock");
+      }else{
+        body.classList.add("_lock");
+      }
+      
+    });
+  }
+};
 
 
 
 onMounted(() => {
   showComponent.value = true;
-  // closeHeader();
+  closeHeader();
+  // handleWindowScroll();
 })
 
 </script>
@@ -76,32 +85,37 @@ header {
   position: fixed;
   z-index: 100;
   width: 100%;
+  height: 50px;
   top: 0;
   display: inline-block;
-  // background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0.3),
-  //     rgba(255, 255, 255, 0) 50%, rgba(0, 0, 0, 0) 51%, rgba(0, 0, 0, 0.3)) !important;
+  // background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.2),
+  //     rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.7)) !important;
   // box-shadow: 0 1px 5px rgba(0, 0, 0, 0.2), 0 2px 2px rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.12);
 
   // .responciveHeader {
-  //   // height: 50px;
+  //   height: 50px;
   //   padding: 3px 0;
   //   backdrop-filter: blur(15px);
   //   @include transition;
   // }
+
   .decor1 {
     position: fixed;
-    background-color: #5124c2;
+    background-color: #6c24f9;
     min-height: 100vh;
     width: 100%;
     bottom: 0;
     left: 0;
-    transition: all 0.6s;
+    transition: transform 0.6s, border-bottom-right-radius 1s;
     transform: translate(-150%, -150%);
     border-bottom-right-radius: 100%;
     z-index: 2;
 
     &._is-open {
       transform: translate(0%, 0%);
+
+      backdrop-filter: blur(15px);
+
     }
   }
 
@@ -120,6 +134,25 @@ header {
 
     &._is-open {
       transform: translate(0%, 0%);
+
+    }
+  }
+
+  .decor3 {
+    position: fixed;
+    min-height: 100vh;
+    width: 100%;
+    opacity: 0;
+    transition: opacity 0.8s, transform 0.1s;
+    transform: translate(-150%, -150%);
+    background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.2),
+        rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.7)) !important;
+    backdrop-filter: blur(10px);
+
+    &._is-open {
+      opacity: 1;
+      transform: translate(0%, 0%);
+      transition: opacity 0.8s, transform 0.1s;
     }
   }
 
@@ -168,12 +201,15 @@ header {
 
 .menu-icon {
   position: fixed;
-  top: 50%;
+  bottom: 113px;
   left: 50%;
   transform: translate(-50%, 0%);
-  margin: 80px 0 0 0;
-  height: 30px;
-  width: 30px;
+  background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.2),
+      rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.7)) !important;
+  box-shadow: 0 1px 5px rgba(0, 0, 0, 0.2), 0 2px 2px rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.12);
+  height: 23px;
+  width: 29px;
+  padding: 2px;
   z-index: 10;
   cursor: pointer;
   display: block;
@@ -194,7 +230,7 @@ header {
 
 .menu-icon__line {
   height: 2px;
-  width: 30px;
+  width: 25px;
   display: block;
   background-color: #fff;
   margin-bottom: 7px;
@@ -223,7 +259,7 @@ header {
 
 .menu-icon:hover .menu-icon__line-left,
 .menu-icon:hover .menu-icon__line-right {
-  width: 30px;
+  width: 25px;
 }
 
 .opentab-enter-from {

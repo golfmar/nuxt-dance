@@ -195,7 +195,9 @@ p {
   grid-template-columns: repeat(3, 1fr);
   column-gap: 25px;
 
-
+@media (max-width: 767px){
+  grid-template-columns:  1fr;
+}
 
   .abbreviations {
     .unit {
@@ -220,7 +222,7 @@ p {
       background: transparent;
       display: flex;
       align-items: center;
-
+text-align: left;
     }
     p {
       transition: all 0.2s;

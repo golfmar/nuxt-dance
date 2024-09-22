@@ -1,5 +1,5 @@
 <template lang='pug'>
-section
+.page
   transition(mode='easy-in-out' name='opentab')
     .container(v-if="showComponent") 
       h1 FIGURES COMMON TO MORE THAN ONE DANCE
@@ -15,54 +15,58 @@ section
         tbody
           tr
             th Impetus Turn and Open Impetus Turn
-            td 1 2 3
-            td S Q Q
-            td S S S
+            td(data-label="WALTZ") 1 2 3
+            td(data-label="FOXTROT") S Q Q
+            td(data-label="QUICKSTEP") S S S
           tr
             th Telemark and Open Telemark
-            td 1 2 3
-            td S Q Q
-            td S S S
+            td(data-label="WALTZ") 1 2 3
+            td(data-label="FOXTROT") S Q Q
+            td(data-label="QUICKSTEP") S S S
           tr
             th Double Rev Spin
-            td 1 2 &amp; 3 <br> or 1 2 3 &amp;
-            td S Q &amp; Q <br> or Q Q &amp; Q
-            td S S Q Q
+            td(data-label="WALTZ") 1 2 &amp; 3 <br> or 1 2 3 &amp;
+            td(data-label="FOXTROT") S Q &amp; Q <br> or Q Q &amp; Q
+            td(data-label="QUICKSTEP") S S Q Q
+         
           tr
             th Outside Change
-            td 1 2 3
-            td S Q Q
-            td S Q Q
+            td(data-label="WALTZ")  1 2 3
+            td(data-label="FOXTROT")  S Q Q
+            td(data-label="QUICKSTEP")  S Q Q
           tr
             th Outside Spin
-            td 1 2 3
-            td S Q Q<br> or &amp; Q Q
-            td S S S<br> or &amp; Q Q
+            td(data-label="WALTZ")  1 2 3
+            td(data-label="FOXTROT")  S Q Q<br> or &amp; Q Q
+            td(data-label="QUICKSTEP")  S S S<br> or &amp; Q Q
           tr
             th Passing Nat Turn (from PP)
-            td 1 2 3
-            td S Q Q
-            td S Q Q
+            td(data-label="WALTZ")  1 2 3
+            td(data-label="FOXTROT")  S Q Q
+            td(data-label="QUICKSTEP")  S Q Q
           tr
             th Prog Chasse to R
-            td 1 2 &amp; 3
-            td - - - -
-            td S Q Q S
+            td(data-label="WALTZ")  1 2 &amp; 3
+            td(data-label="FOXTROT")  - - - -
+            td(data-label="QUICKSTEP")  S Q Q S
           tr
             th Fall away Rev and Slip Pivot
-            td 1 2 &amp; 3<br>1 2 3 &amp;<br>1 &amp; 2 3<br>1 2 3 1
-            td S Q Q Q<br>S Q Q &amp;<br>S Q &amp; Q <br>S Q Q S
-            td S Q Q S
+            td(data-label="WALTZ")  1 2 &amp; 3<br>1 2 3 &amp;<br>1 &amp; 2 3<br>1 2 3 1
+            td(data-label="FOXTROT")  S Q Q Q<br>S Q Q &amp;<br>S Q &amp; Q <br>S Q Q S
+            td(data-label="QUICKSTEP")  S Q Q S
           tr
             th Rev Pivot
-            td &amp; or Any whole count
-            td S or Q or &amp;
-            td S or Q or &amp;
+            td(data-label="WALTZ")  &amp; or Any whole count
+            td(data-label="FOXTROT")  S or Q or &amp;
+            td(data-label="QUICKSTEP")  S or Q or &amp;
           tr
             th Whisk and Back Whisk
-            td 1 2 3
-            td S Q Q
-            td S S S
+            td(data-label="WALTZ")  1 2 3
+            td(data-label="FOXTROT")  S Q Q
+            td(data-label="QUICKSTEP")  S S S
+
+
+
       p In Whisk and Back Whisk Rise and Fall in Foxtrot and Quickstep would not be gradual as in Waltz.
       h3 TANGO
       p <strong>Open Telemark</strong> Q Q S. When preceded by a Href Pivot or a Slip Pivot counted Q, the Telemark would be Q Q Q, this would also apply when followed by steps 2 and 3 of Prom Link QQQQS.
@@ -83,6 +87,7 @@ onMounted(() => {
 </script>
 
 <style lang="scss" scoped>
+
 table {
   border-collapse: collapse;
   width: auto;
@@ -91,7 +96,7 @@ table {
   border: 2px solid #2d019b;
   box-shadow: 1px 1px 4px #666;
   font-family: "Roboto-Regular", sans-serif;
-  font-size: 1rem;
+ 
   font-weight: 400;
   color: #000;
 }
@@ -133,13 +138,43 @@ p {
   margin: 3px 0;
 }
 
-.opentab-enter-from {
-  opacity: 0;
-  transition: opacity .5s ease-in-out;
-}
+@media (max-width: 767px) {
 
-.opentab-enter-to {
-  opacity: 1;
-  transition: opacity .5s ease-in-out;
+  table,
+  thead,
+  tbody,
+  th,
+  td,
+  tr,caption {
+    display: block; // каждая часть таблицы становится блочной
+  }
+caption {
+  padding: 5px;
+  color: #000;
+}
+  thead tr {
+    display: none; // скрываем заголовки таблицы
+  }
+
+  tr {
+  
+    
+  }
+
+  td {
+    display: flex;
+    justify-content: space-between;
+    padding: 3px 0 3px 125px;
+    position: relative;
+    text-align: right;
+
+    &:before {
+      content: attr(data-label); // Используем атрибут для отображения заголовка
+      position: absolute;
+      left: 10px;
+      font-weight: bold;
+      text-align: left;
+    }
+  }
 }
 </style>
