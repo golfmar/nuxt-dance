@@ -75,23 +75,7 @@ a {
 .rel {
   position: relative;
 }
-.linkTo {
-  @include ts;
-  color: #9ca2fc;
-  display: inline-flex;
-  align-items: center;
-  column-gap: 5px;
-  transition: all 0.2s;
 
-  &:hover {
-    color: brown;
-  }
-
-  svg {
-    width: 15px;
-    height: 15px;
-  }
-}
 // .salut {
 //   position: absolute;
 //   right: 0;

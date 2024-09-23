@@ -39,14 +39,38 @@
     width: 100%;
     height: 100%;
     left: 0;
-    @include ts;
+    @include transition;
     color: azure;
     svg {
       position: absolute;
       right: -20px;
+      color: azure;
     }
   }
 }
+
+.linkTo {
+  color: #9ca2fc;
+  display: inline-flex;
+  align-items: center;
+  column-gap: 5px;
+  transition: all 0.2s;
+
+  &:hover {
+    color: brown;
+     svg {
+      color: brown;
+    }
+  }
+
+  svg {
+    width: 15px;
+    height: 15px;
+  }
+}
+
+
+
 .common-id {
   h2 {
     font-family: "RR", sans-serif;
